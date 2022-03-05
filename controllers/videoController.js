@@ -8,9 +8,10 @@ exports.getAllVideos = async (req, res) => {
   try {
     let resp = "";
     if (process.env.MODE === "OFFLINE") {
+      const filename = process.env.DATAFILENAME;
       console.log("offline mode...");
       const offlineData = fs.readFileSync(
-        `${__dirname}/../data/youtubeAPIResultSmall.json`,
+        `${__dirname}/../data/${filename}`,
         "utf-8"
       );
       resp = JSON.parse(offlineData);
